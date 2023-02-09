@@ -1,7 +1,14 @@
 <%- include("partials/header") %>
 <h1>Compost</h1>
 <form class="" action="/compose" method="post">
-    <input type="text" name="postTitle" value="">
-    <button class="btn" type="submit" name="button">Publish</button>
+    <div class="fieldset">
+        <label for="postTitle" class="fw-bold">Title</label>
+        <input type="text" name="postTitle">
+    </div>
+    <div class="fieldset">
+        <label for="postBody" class="fw-bold">Post</label>
+        <textarea name="postBody" rows="5"></textarea>
+    </div>
+    <button class="btn btn-mid btn-primary" type="submit" name="button">Publish</button>
 </form>
 <%- include("partials/footer") %>
