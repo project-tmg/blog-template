@@ -23,7 +23,6 @@ const posts = [];
 //process
 app.get("/", function(req, res) {
     res.render("home", {startingContent: homeStartingContent, posts: posts});
-    console.log(_.lowerCase('--Foo-Bar--'));
 });
 
 app.get("/about", function(req, res) {
@@ -39,6 +38,7 @@ app.get("/compose", function(req, res) {
 });
 app.post("/compose", function(req, res) {
     const post = {title: req.body.postTitle, content: req.body.postBody};
+    console.log(req.body.postBody)
     posts.push(post);
     res.redirect("/");
 });
@@ -47,9 +47,9 @@ app.get("/posts/:post", function(req, res) {
     posts.forEach(function(post) {
         const storedTitle = _.lowerCase(req.params.post);
         const postTitle = _.lowerCase(post.title);
-        console.log(storedTitle + " | " + postTitle);
+        //console.log(storedTitle + " | " + postTitle);
         if (postTitle == storedTitle) {
-            console.log("match found");
+            res.render("post", {title: post.title, content: post.content});
         } else {
             console.log("no match");
         }
